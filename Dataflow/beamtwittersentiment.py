@@ -13,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 logging.getLogger().setLevel(logging.INFO)
 
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '<YOUR_CRED.JSON_FILE>'
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = '<YOUR_CREDS.JSON_FILE>'
 INPUT_SUBSCRIPTION = "projects/<PROJECT_ID>/subscriptions/<YOUR_PUBSUB_SUBSCRIPTION>"
 BIGQUERY_TABLE = "<PROJECT_ID>:<DATASET_ID>.<TABLE_NAME>"
 BIGQUERY_SCHEMA = "text:STRING, id:STRING, created_at:STRING, timestamp:TIMESTAMP, sentiment:STRING, sentiment_score:FLOAT, magnitude_score:FLOAT"
@@ -30,13 +30,17 @@ class CustomParsing(beam.DoFn):
         from google.cloud import language_v1
         parsed = json.loads(element.decode("utf-8"))
         text = parsed["text"]
+        # Removes website URLs
         text = re.sub('http://\S+|https://\S+', '', text)
+        # Removes mentions
         text = re.sub(r"@[A-Za-z0-9]+", "", text)
-        # Check this one
+        # Removes mentions where username has underscores
         text = re.sub(r"@[A-Za-z0-9]+_", "", text)
+        # Removes hashtags
         text = re.sub(r"#[A-Za-z0-9]+", "", text)
         # Removes punctuation
         text = re.sub(r'[^\w\s]', '', text)
+        # Removes retweets
         text = text.replace("RT", "")
         text = text.lower()
         text = text.strip()
