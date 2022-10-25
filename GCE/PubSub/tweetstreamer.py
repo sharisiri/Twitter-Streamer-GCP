@@ -4,15 +4,14 @@ import tweepy
 from google.cloud import pubsub_v1
 from google.oauth2 import service_account
 
-# GCP
-
+# Service Account File
 key_path = "<YOUR_CREDS.JSON_FILE>"
 credentials = service_account.Credentials.from_service_account_file(
     key_path,
     scopes=["https://www.googleapis.com/auth/cloud-platform"]
 )
 
-# Pub/Sub
+# Pub/Sub Client
 pubsub_client = pubsub_v1.PublisherClient(credentials=credentials)
 
 # Pub/Sub Topic(ID, Topic)
@@ -40,7 +39,7 @@ class TweetStreamer(tweepy.Stream):
             return False
 
 
-# Initialize instance of the subclass
+# Initialize steamer instance
 streamer = TweetStreamer(
     consumer_key, consumer_secret,
     access_token, access_token_secret
