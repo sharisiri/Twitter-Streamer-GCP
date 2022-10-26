@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repo contains the source code for the writeup on how to build a streaming pipeline in GCP using the Twitter API, GCE, Pub / Sub, Dataflow, and BigQuery.
+This repo contains the source code for the [writeup on how to build a streaming pipeline in GCP](https://medium.com/@808engineering/how-to-build-a-streaming-pipeline-for-twitter-sentiment-analysis-with-gce-pub-sub-dataflow-2e204115c81) using the Twitter API, GCE, Pub / Sub, Dataflow, and BigQuery.
 
 ![Twitter Sentiment Streaming Pipeline](https://user-images.githubusercontent.com/37027404/197961365-78ae53aa-4e08-48f1-aab2-31eeed5c1b05.png)
 
