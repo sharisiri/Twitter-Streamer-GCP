@@ -51,4 +51,4 @@ gcloud compute instances create <VM_NAME> \
 --metadata=startup-script-url=gs://<BUCKET_NAME>/startup-script.sh
 ```
 
-Check BigQuery after a minute or two and confirm that tweets are stored correctly.
+Check BigQuery after a minute or two and confirm that tweets are flowing in correctly.
