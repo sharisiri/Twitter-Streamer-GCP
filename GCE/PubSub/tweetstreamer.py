@@ -46,4 +46,4 @@ streamer = TweetStreamer(
 )
 
 # Filter real-time Tweets by keyword
-streamer.filter(languages=["en"], track=["Ethereum"])
+streamer.filter(languages=["en"], track=["<KEYWORD_TO_TRACK>"])
