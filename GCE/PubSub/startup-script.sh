@@ -1,4 +1,4 @@
-#! /bin/bash
+#!usr/bin/bash
 cd /home/$USER
 apt -qq update
 apt-get install -yq python3 python3-pip
